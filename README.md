@@ -10,7 +10,11 @@ LoggerBill is the second release from MapleScot development and our first to use
 We are still learning though, this is only our second game so we need your help to bring our many (more original) ideas to the world. So, we've released this game as Open Source. We would like to invite everyone to view our code. If you use our ideas, designs, or have learned anything from our code we would love to hear from you and we would love to have your feedback and suggestions on how to improve the game or how to improve our code.
 
 As a demo of the capabilities of LibGDX this game demonstrates:
-- Use of Google Play Games Achievements and Leaderboards
+- Use of Google Play Games
+  - Achievements
+  - Leaderboards
+  - Cloud Save
+  - Admob Ads
 - Smooth transition from screens, menus, popup dialogs. Back button works logically.
 - OpenGL Shaders for night-time and ghost effects
 - Loading of Assets while a loading animation plays
