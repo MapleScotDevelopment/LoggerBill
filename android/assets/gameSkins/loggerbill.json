@@ -1,0 +1,143 @@
+{
+    com.badlogic.gdx.graphics.g2d.BitmapFont: { large-font: { file: fonts/dvsc40.fnt } },
+    com.badlogic.gdx.graphics.g2d.BitmapFont: { medium-font: { file: fonts/mediumFont.fnt } },
+    com.badlogic.gdx.graphics.g2d.BitmapFont: { small-font: { file: fonts/default.fnt } },
+
+
+    "com.badlogic.gdx.graphics.Color": {
+            "green": {
+                "a": 1,
+                "b": 0,
+                "g": 1,
+                "r": 0
+            },
+            "blue": {
+                "a": 1,
+                "b": 1,
+                "g": 0,
+                "r": 0
+            },
+            "white": {
+                "a": 1,
+                "b": 1,
+                "g": 1,
+                "r": 1
+            },
+            "red": {
+                "a": 1,
+                "b": 0,
+                "g": 0,
+                "r": 1
+            },
+            "gold": {
+                "a": 1,
+                "b": 0,
+                "g": 0.84,
+                "r": 1
+            },
+            "brown": {
+                "a": 1,
+                "b": 0.07,
+                "g": 0.13,
+                "r": 0.21
+            },
+
+            "black": {
+                "a": 1,
+                "b": 0,
+                "g": 0,
+                "r": 0
+            }
+
+    },
+    "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+        "playButton": {
+            "down": "button_play_push",
+            "up": "button_play"
+        },
+        "achButton": {
+            "down": "button_ach_off",
+            "up": "button_ach"
+        },
+        "leaderButton": {
+            "down": "button_leader_off",
+            "up": "button_leader"
+        },
+        "twitButton": {
+            "disabled": "button_twitter_off",
+            "down": "button_twitter_off",
+            "up": "button_twitter"
+        },
+        "offButton": {
+            "down": "button_off_push",
+            "up": "button_off"
+        },
+        "backButton": {
+            "down": "button_back",
+            "up": "button_back"
+        },
+        "replayButton": {
+            "down": "button_replay",
+            "up": "button_replay"
+        },
+        "logoButton": {
+            "down": "button_ms_logo_push",
+            "up": "button_ms_logo"
+        }
+    },
+
+    "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+            "musicButton": {
+                "down": "button_music_off",
+                "up": "button_music_off",
+                "checked": "button_music"
+            },
+            "speakerButton": {
+                "down": "button_speaker_off",
+                "up": "button_speaker_off",
+                "checked": "button_speaker"
+            }
+    },
+
+    "com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle": {
+        "paused": {
+            "titleFont": "medium-font",
+            "background": "paused_background",
+            "titleFontColor": "green"
+        },
+        "game_over": {
+            "titleFont": "medium-font",
+            "background": "paused_background",
+            "titleFontColor": "red"
+        }
+    },
+
+    "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+            "default": {
+                "font": "medium-font",
+                "fontColor": "white",
+                "background": null
+            },
+            "label": {
+                "font": "large-font",
+                "fontColor": "brown",
+                "background": null
+            },
+            "score": {
+                "font": "medium-font",
+                "fontColor": "white",
+                "background": null
+            },
+             "stats": {
+                 "font": "small-font",
+                 "fontColor": "white",
+                 "background": null
+             },
+            "highscore": {
+                "font": "medium-font",
+                "fontColor": "gold",
+                "background": null
+            }
+        }
+
+}

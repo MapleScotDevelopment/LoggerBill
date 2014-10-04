@@ -1,0 +1,26 @@
+#ifdef GL_ES
+precision highp float;
+#endif
+
+uniform float time;
+uniform sampler2D u_texture;
+
+//"in" varyings from our vertex shader
+varying vec4 vColor;
+varying vec2 vTexCoord;
+
+void main(void) {
+    vec2 cPos = -1.0 + 2.0 * vTexCoord.xy;
+    float cLength = length(cPos)*4.0;
+
+
+    vec2 uv = vTexCoord.xy+(cPos/cLength)*cos(cLength*30.0-time*10.0)*0.01;
+    vec3 col = texture2D(u_texture,uv).xyz;
+    vec4 fCol = vec4(col,vColor.a);
+    // A hack to make full black and full white transparent. Not sure why I have to do this... The alpha channel should
+    // be coming from the texture, but it doesn't seem to be. I'm new to shaders...
+    if (fCol.r == 0.0 && fCol.g == 0.0 && fCol.b == 0.0 ) fCol.a = 0.0;
+    if (fCol.r == 1.0 && fCol.g == 1.0 && fCol.b == 1.0 ) fCol.a = 0.0;
+    gl_FragColor = fCol;
+
+}

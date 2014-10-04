@@ -1,0 +1,18 @@
+{
+    bestChunks: {
+        name: "bestChunks",
+        id: "ID GOES HERE0",
+    },
+    totalChunks: {
+        name: "totalChunks",
+        id: "ID GOES HERE1",
+    },
+    totalTime: {
+        name: "totalTime",
+        id: "ID GOES HERE2",
+    },
+    bestChunksPerSecond: {
+        name: "bestChunksPerSecond",
+        id: "ID GOES HERE3",
+    }
+}
