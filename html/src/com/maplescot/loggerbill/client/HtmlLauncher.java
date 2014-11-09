@@ -24,83 +24,101 @@ import com.maplescot.loggerbill.gpg.GPG;
 
 public class HtmlLauncher extends GwtApplication {
 
-        @Override
-        public GwtApplicationConfiguration getConfig () {
-            return new GwtApplicationConfiguration(540, 960);
-        }
+    @Override
+    public GwtApplicationConfiguration getConfig () {
+        return new GwtApplicationConfiguration(540, 960);
+    }
 
-        @Override
-        public ApplicationListener getApplicationListener () {
-                // GooglePlayGames
-            GPG.Resolver gpg = new GPG.Resolver() {
-                @Override
-                public boolean getSignedIn() {
-                    return false;
-                }
+    public static native boolean nativeGetSignedIn() /*-{
+        return $wnd.login.loggedIn;
+    }-*/;
 
-                @Override
-                public void login() {
+    public static native void nativeLogin() /*-{
+        $wnd.login.init();
+    }-*/;
 
-                }
+    @Override
+    public ApplicationListener getApplicationListener () {
+            // GooglePlayGames
+        GPG.Resolver gpg = new GPG.Resolver() {
+            @Override
+            public boolean getSignedIn() {
+                return nativeGetSignedIn();
+            }
 
-                @Override
-                public void submitScore(String leaderboardId, int score) {
+            @Override
+            public void login() {
+                nativeLogin();
+            }
 
-                }
+            @Override
+            public void submitScore(String leaderboardId, long score) {
 
-                @Override
-                public void unlockAchievement(String achievementId) {
+            }
 
-                }
+            @Override
+            public void unlockAchievement(String achievementId) {
 
-                @Override
-                public void showLeaderboards(Stage stage) {
+            }
 
-                }
+            @Override
+            public boolean canShowLeaderboards() {
+                return false;
+            }
 
-                @Override
-                public void showAchievements(Stage stage) {
+            @Override
+            public void showLeaderboards(Stage stage) {
 
-                }
+            }
 
-                @Override
-                public void setAchievementIncrement(String id, int value) {
+            @Override
+            public boolean canShowAchievements() {
+                return false;
+            }
 
-                }
-            };
+            @Override
+            public void showAchievements(Stage stage) {
 
-            // Ads
-            Ads.Resolver ads = new Ads.Resolver() {
-                @Override
-                public void showBanner(boolean show) {
+            }
 
-                }
+            @Override
+            public void setAchievementIncrement(String id, long value, long max) {
 
-                @Override
-                public void showInterstitial() {
+            }
+        };
 
-                }
+        // Ads
+        Ads.Resolver ads = new Ads.Resolver() {
+            @Override
+            public void showBanner(boolean show) {
 
-                @Override
-                public void endAds() {
+            }
 
-                }
-            };
+            @Override
+            public void showInterstitial() {
 
-            // CloudSave
-            CloudSave.Resolver cloudsave = new CloudSave.Resolver() {
+            }
 
-                @Override
-                public void register(CloudSave.ConflictResolver conflictResolver) {
+            @Override
+            public void endAds() {
 
-                }
+            }
+        };
 
-                @Override
-                public void save(byte[] profile) {
+        // CloudSave
+        CloudSave.Resolver cloudsave = new CloudSave.Resolver() {
 
-                }
-            };
+            @Override
+            public void register(CloudSave.ConflictResolver conflictResolver) {
 
-            return new LoggerBillGame(gpg, ads, cloudsave, null, null);
-        }
+            }
+
+            @Override
+            public void save(byte[] profile) {
+
+            }
+        };
+
+        return new LoggerBillGame(gpg, ads, cloudsave, null, null, "http://maple.scot/index.php/articles/6-loggerbill-online");
+    }
 }

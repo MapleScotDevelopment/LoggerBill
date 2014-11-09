@@ -13,6 +13,7 @@
  */
 package com.maplescot.loggerbill.misc;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
@@ -27,6 +28,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.maplescot.loggerbill.game.world.Chunk;
+import com.maplescot.loggerbill.ui.MainMenu;
+import com.maplescot.loggerbill.ui.SplashScreen;
 
 import java.util.Random;
 
@@ -70,6 +73,10 @@ public class Assets implements Disposable, AssetErrorListener {
     public Sound thwack;
     private AssetManager assetManager;
     private boolean initialized = false;
+
+    // only ever have one of these
+    public SplashScreen splashScreen=null;
+    public MainMenu mainMenu=null;
 
     public static Assets getInstance() {
         return myInstance;
@@ -136,11 +143,20 @@ public class Assets implements Disposable, AssetErrorListener {
         biPlaneRegion = new TextureRegion(atlas.findRegion("biplane"));
         guage_full = new TextureRegion(atlas.findRegion("guage_full"));
         guage_empty = new TextureRegion(atlas.findRegion("guage_empty"));
-        tapIcon_left = new TextureRegion(atlas.findRegion("tap"));
-        tapIcon_right = new TextureRegion(atlas.findRegion("tap"));
+
+        if (Gdx.app.getType() == Application.ApplicationType.Desktop ||
+                Gdx.app.getType() == Application.ApplicationType.WebGL) {
+            tapIcon_left = new TextureRegion(atlas.findRegion("key"));
+            tapIcon_right = new TextureRegion(atlas.findRegion("key"));
+        } else {
+            tapIcon_left = new TextureRegion(atlas.findRegion("tap"));
+            tapIcon_right = new TextureRegion(atlas.findRegion("tap"));
+        }
+
         tapIcon_left.flip(true, true);
         tapIcon_right.flip(false, true);
-
+        //keyIcon_left.flip(true, true);
+        //keyIcon_right.flip(false, true);
         clouds = new Clouds(atlas);
         font = new AssetFonts();
 

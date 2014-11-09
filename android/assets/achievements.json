@@ -1,56 +1,56 @@
 {
-    com.maplescot.loggerbill.gpg.LoggerBillAchievement: {
-        id: "ID GOES HERE0",
-        name: "Blowing Chunks",
-        desc: "Chopped at a rate of 5 chunks per second",
-        type: "cps",
-        test: "GT",
-        value: 5f,
-        incremental: false
+    "com.maplescot.loggerbill.gpg.LoggerBillAchievement": {
+        "id": "CgkIxIvcxfEDEAIQAQ",
+        "name": "Blowing Chunks",
+        "desc": "Chopped at a rate of 5 chunks per second",
+        "type": "cps",
+        "test": "GT",
+        "value": 5,
+        "incremental": false
     },
-    com.maplescot.loggerbill.gpg.LoggerBillAchievement: {
-        id: "ID GOES HERE1",
-        name: "Spewing Chunks",
-        desc: "Chopped at a rate of 7 chunks per second",
-        type: "cps",
-        test: "GT",
-        value: 7f,
-        incremental: false
+    "com.maplescot.loggerbill.gpg.LoggerBillAchievement": {
+        "id": "CgkIxIvcxfEDEAIQAg",
+        "name": "Spewing Chunks",
+        "desc": "Chopped at a rate of 7 chunks per second",
+        "type": "cps",
+        "test": "GT",
+        "value": 7,
+        "incremental": false
     },
-    com.maplescot.loggerbill.gpg.LoggerBillAchievement: {
-        id: "ID GOES HERE2",
-        name: "I'm a Lumberjack",
-        desc: "..and i'm okay. Chopped 100 chunks",
-        type: "chunks",
-        test: "GT",
-        value: 100f,
-        incremental: true
+    "com.maplescot.loggerbill.gpg.LoggerBillAchievement": {
+        "id": "CgkIxIvcxfEDEAIQAw",
+        "name": "I'm a Lumberjack",
+        "desc": "..and i'm okay. Chopped 100 chunks",
+        "type": "chunks",
+        "test": "GT",
+        "value": 100,
+        "incremental": true
     },
-    com.maplescot.loggerbill.gpg.LoggerBillAchievement: {
-        id: "ID GOES HERE3",
-        name: "I Sleep All Night",
-        desc: "..and I work all day. Chopped 300 chunks",
-        type: "chunks",
-        test: "GT",
-        value: 300,
-        incremental: true
+    "com.maplescot.loggerbill.gpg.LoggerBillAchievement": {
+        "id": "CgkIxIvcxfEDEAIQBA",
+        "name": "I Sleep All Night",
+        "desc": "..and I work all day. Chopped 300 chunks",
+        "type": "chunks",
+        "test": "GT",
+        "value": 300,
+        "incremental": true
     },
-    com.maplescot.loggerbill.gpg.LoggerBillAchievement: {
-        id: "ID GOES HERE4",
-        name: "I Chop Down Trees",
-        desc: "..I wear high heels. Chopped 500 chunks",
-        type: "chunks",
-        test: "GT",
-        value: 500,
-        incremental: true
+    "com.maplescot.loggerbill.gpg.LoggerBillAchievement": {
+        "id": "CgkIxIvcxfEDEAIQBQ",
+        "name": "I Chop Down Trees",
+        "desc": "..I wear high heels. Chopped 500 chunks",
+        "type": "chunks",
+        "test": "GT",
+        "value": 500,
+        "incremental": true
     },
-    com.maplescot.loggerbill.gpg.LoggerBillAchievement: {
-        id: "ID GOES HERE5",
-        name: "The Chunkinator",
-        desc: "How many chunks could a wood chuck chunk if a wood chuck could chunk wood? 1000",
-        type: "chunks",
-        test: "GT",
-        value: 1000,
-        incremental: true
-    },
+    "com.maplescot.loggerbill.gpg.LoggerBillAchievement": {
+        "id": "CgkIxIvcxfEDEAIQCQ",
+        "name": "The Chunkinator",
+        "desc": "How many chunks could a wood chuck chunk if a wood chuck could chunk wood? 1000",
+        "type": "chunks",
+        "test": "GT",
+        "value": 1000,
+        "incremental": true
+    }
 }

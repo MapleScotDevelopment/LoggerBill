@@ -16,6 +16,7 @@
 
 package com.maplescot.loggerbill.game;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -111,7 +112,7 @@ public class LoggerEngine implements GameEngine, GameRenderer, InputProcessor {
     }
 
     @Override
-    public InputProcessor getInpustProcessor() {
+    public InputProcessor getInputProcessor() {
         return this;
     }
 
@@ -151,6 +152,8 @@ public class LoggerEngine implements GameEngine, GameRenderer, InputProcessor {
         tree.clear();
         buildTree();
 
+        // trigger loading a new ad for those ad networks that need it
+        Ads.getInstance().showBanner(true);
 
     }
 
@@ -259,8 +262,8 @@ public class LoggerEngine implements GameEngine, GameRenderer, InputProcessor {
     }
 
     public void endGame() {
+        Gdx.app.debug(TAG, "Ending game.");
         playing = false;
-        dispose();
     }
 
     /**
@@ -305,8 +308,15 @@ public class LoggerEngine implements GameEngine, GameRenderer, InputProcessor {
         batch.draw(Assets.getInstance().tapIcon_right, ((VIEWPORT_GUI_WIDTH / 5) * 4) - 50, (float) ((getViewportHeight() - 300) - (Math.sin(offset) * 25)), 100, 100);
 
         Assets.getInstance().font.normal.setColor(1f, 0f, 0f, 1f);
-        Assets.getInstance().font.normal.draw(batch, "Tap", ((VIEWPORT_GUI_WIDTH / 5) - 35), (getViewportHeight() - 200));
-        Assets.getInstance().font.normal.draw(batch, "Tap", (((VIEWPORT_GUI_WIDTH / 5) * 4) - 30), (getViewportHeight() - 200));
+
+        String helpText;
+        if (Gdx.app.getType() == Application.ApplicationType.Desktop ||
+                Gdx.app.getType() == Application.ApplicationType.WebGL ||
+                Gdx.app.getType() == Application.ApplicationType.Applet) helpText = "Press";
+        else helpText = "Tap";
+
+        Assets.getInstance().font.normal.draw(batch, helpText, ((VIEWPORT_GUI_WIDTH / 5) - 35), (getViewportHeight() - 200));
+        Assets.getInstance().font.normal.draw(batch, helpText, (((VIEWPORT_GUI_WIDTH / 5) * 4) - 30), (getViewportHeight() - 200));
 
     }
 
@@ -428,6 +438,7 @@ public class LoggerEngine implements GameEngine, GameRenderer, InputProcessor {
 
     @Override
     public void dispose() {
+        Gdx.app.debug(TAG, "Disposing resources");
         pausedDialog.dispose();
     }
 

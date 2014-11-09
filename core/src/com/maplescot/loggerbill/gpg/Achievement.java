@@ -54,6 +54,10 @@ public abstract class Achievement {
         return type;
     }
 
+    public float getValue() {
+        return value;
+    }
+
     public boolean isIncremental() {
         return incremental;
     }

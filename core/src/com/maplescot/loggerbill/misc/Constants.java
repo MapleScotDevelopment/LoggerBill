@@ -22,9 +22,9 @@ import com.badlogic.gdx.Gdx;
  */
 public class Constants {
 
-    public static final String TEXTURE_ATLAS_UI = "images/loggerbill-ui.pack";
+    public static final String TEXTURE_ATLAS_UI = "images/loggerbill-ui.atlas";
     public static final String MAIN_UI = "gameSkins/loggerbill.json";
-    public static final String TEXTURE_ATLAS_STD_UI = "images/uiskin.pack";
+    public static final String TEXTURE_ATLAS_STD_UI = "images/uiskin.atlas";
     public static final String MAIN_STD_UI = "gameSkins/uiskin.json";
 
     public static final String ACHIEVEMENTS = "achievements.json";
@@ -43,8 +43,8 @@ public class Constants {
     public static final String MUSIC = "sounds/BamaCountry.ogg";
     public static final String THWACK = "sounds/axe-slash.wav";
 
-    public static final String TEXTURE_ATLAS_GAME = "images/game-sprites.pack";
-    public static final String TEXTURE_ATLAS_SPLASH = "images/splash-sprites.pack";
+    public static final String TEXTURE_ATLAS_GAME = "images/game-sprites.atlas";
+    public static final String TEXTURE_ATLAS_SPLASH = "images/splash-sprites.atlas";
 
     public static final int CHUNK_COUNT = 6;
 
@@ -80,7 +80,8 @@ public class Constants {
     public static final int MIN_CHUNKS_FOR_CPS = 10;
 
     // Tweet tweet
-    public static final String app_url = "https://play.google.com/store/apps/details?id=com.maplescot.loggerbill.android";
+    public static final String app_url = "http://maple.scot/index.php/our-games/4-loggerbill";
+    public static String app_specific_url = null;
     public static final String tweet_url1 = "https://twitter.com/intent/tweet?text=";
     public static final String tweet_url2 = "&url=";
 

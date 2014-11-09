@@ -56,7 +56,7 @@ public class PausedDialog {
             public boolean keyDown(int keyCode) {
                 Gdx.app.log(TAG, "BACK");
                 if (keyCode == Input.Keys.BACK || keyCode == Input.Keys.ESCAPE) {
-                    Gdx.input.setInputProcessor(engine.getInpustProcessor());
+                    Gdx.input.setInputProcessor(engine.getInputProcessor());
                     if (engine.isAlive()) engine.setPause(false);
                     else engine.endGame();
                 } else if (keyCode ==  Input.Keys.ENTER) {
@@ -87,7 +87,7 @@ public class PausedDialog {
 
 
         int plays = (int) ProfileManager.getProfile().getTotalPlays();
-        BigDecimal myCPS = chunks > Constants.MIN_CHUNKS_FOR_CPS ? new BigDecimal(chunks / time).setScale(2, RoundingMode.HALF_UP) : new BigDecimal(0.0f);
+        BigDecimal myCPS = chunks > Constants.MIN_CHUNKS_FOR_CPS ? new BigDecimal(chunks / time).setScale(2, RoundingMode.HALF_UP) : BigDecimal.ZERO;
 
 
         Table textLayer = new Table();
@@ -174,11 +174,14 @@ public class PausedDialog {
     private void resumeGame() {
         if (!engine.isAlive()) engine.reset();
         engine.setPause(false);
-        Gdx.input.setInputProcessor(engine.getInpustProcessor());
+        Gdx.input.setInputProcessor(engine.getInputProcessor());
     }
 
     public void dispose() {
+        billSkin.dispose();
+        billSkin.dispose();
         stage.dispose();
+
     }
 
 }

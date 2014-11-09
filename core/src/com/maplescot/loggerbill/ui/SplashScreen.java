@@ -59,7 +59,8 @@ public class SplashScreen extends AbstractScreen {
             stateTime += delta;
             if (assetsLoaded && stateTime >= 2.0) {
                 Assets.getInstance().playMusic(ProfileManager.getProfile().isMusicOn());
-                game.setScreen(new MainMenu(game));
+                Assets.getInstance().mainMenu = new MainMenu(game);
+                game.setScreen(Assets.getInstance().mainMenu);
 
             }
             if (stateTime >= 0.5f && alpha < 1.0) alpha += delta;

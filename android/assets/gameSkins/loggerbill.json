@@ -1,7 +1,7 @@
 {
-    com.badlogic.gdx.graphics.g2d.BitmapFont: { large-font: { file: fonts/dvsc40.fnt } },
-    com.badlogic.gdx.graphics.g2d.BitmapFont: { medium-font: { file: fonts/mediumFont.fnt } },
-    com.badlogic.gdx.graphics.g2d.BitmapFont: { small-font: { file: fonts/default.fnt } },
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {"large-font": {"file": "fonts/dvsc40.fnt"}},
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {"medium-font": {"file": "fonts/mediumFont.fnt"}},
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {"small-font": {"file": "fonts/default.fnt"}},
 
 
     "com.badlogic.gdx.graphics.Color": {

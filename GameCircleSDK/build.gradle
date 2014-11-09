@@ -1,12 +1,8 @@
+apply plugin: 'android-library'
+
 android {
-    buildToolsVersion '19.1.0'
-    compileSdkVersion 14
-    buildTypes {
-        debug {
-            debuggable true
-            jniDebugBuild true
-        }
-    }
+    buildToolsVersion '20.0'
+    compileSdkVersion 17
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -22,37 +18,6 @@ android {
     defaultConfig {}
     productFlavors {
     }
-}
-// needed to add JNI shared libraries to APK when compiling on CLI
-tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
-    pkgTask.jniFolders = new HashSet<File>()
-    pkgTask.jniFolders.add(new File(projectDir, 'libs'))
-}
-// called every time gradle gets executed, takes the native dependencies of
-// the natives configuration, and extracts them to the proper libs/ folders
-// so they get packed with the APK.
-task copyAndroidNatives() {
-    file("libs/armeabi/").mkdirs();
-    file("libs/armeabi-v7a/").mkdirs();
-    file("libs/x86/").mkdirs();
-
-    configurations.natives.files.each { jar ->
-        def outputDir = null
-        if (jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("libs/armeabi-v7a")
-        if (jar.name.endsWith("natives-armeabi.jar")) outputDir = file("libs/armeabi")
-        if (jar.name.endsWith("natives-x86.jar")) outputDir = file("libs/x86")
-        if (outputDir != null) {
-            copy {
-                from zipTree(jar)
-                into outputDir
-                include "*.so"
-            }
-        }
-    }
-}
-task run(type: Exec) {
-    def adb = "$System.env.ANDROID_HOME/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.maplescot.loggerbill.android/com.maplescot.loggerbill.android.AndroidLauncher'
 }
 // sets up the Android Eclipse project, using the old Ant based build.
 eclipse {

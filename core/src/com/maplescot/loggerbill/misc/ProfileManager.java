@@ -84,5 +84,8 @@ public class ProfileManager implements CloudSave.ConflictResolver {
 
         if (currentAccountName != null)
             profile.setGplusId(currentAccountName);
+
+        // reset sound flags here as they might have changed
+        Assets.getInstance().mainMenu.resetSoundButtons();
     }
 }

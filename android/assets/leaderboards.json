@@ -1,18 +1,18 @@
 {
-    bestChunks: {
-        name: "bestChunks",
-        id: "ID GOES HERE0",
+    "bestChunks": {
+        "name": "bestChunks",
+        "id": "CgkIxIvcxfEDEAIQBg"
     },
-    totalChunks: {
-        name: "totalChunks",
-        id: "ID GOES HERE1",
+    "totalChunks": {
+        "name": "totalChunks",
+        "id": "CgkIxIvcxfEDEAIQBw"
     },
-    totalTime: {
-        name: "totalTime",
-        id: "ID GOES HERE2",
+    "totalTime": {
+        "name": "totalTime",
+        "id": "CgkIxIvcxfEDEAIQCw"
     },
-    bestChunksPerSecond: {
-        name: "bestChunksPerSecond",
-        id: "ID GOES HERE3",
+    "bestChunksPerSecond": {
+        "name": "bestChunksPerSecond",
+        "id": "CgkIxIvcxfEDEAIQCA"
     }
 }

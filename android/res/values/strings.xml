@@ -3,5 +3,6 @@
 
     <string name="app_name">LoggerBill</string>
     <string name="app_id">0123456789</string>
+    <string name="app_url">https://play.google.com/store/apps/details?id=com.maplescot.loggerbill.android</string>
 
 </resources>

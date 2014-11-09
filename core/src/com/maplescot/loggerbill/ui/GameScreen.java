@@ -85,7 +85,7 @@ public class GameScreen extends AbstractScreen {
         engine.init();
         engine.reset();
 
-        Gdx.input.setInputProcessor(engine.getInpustProcessor()); // No. 5 need input.... Innnnppuuuuut. (This class will read touch events)
+        Gdx.input.setInputProcessor(engine.getInputProcessor()); // No. 5 need input.... Innnnppuuuuut. (This class will read touch events)
         Gdx.input.setCatchBackKey(true);
 
         Assets.getInstance().playMusic(ProfileManager.getProfile().isMusicOn());
@@ -113,7 +113,10 @@ public class GameScreen extends AbstractScreen {
         renderer.drawHUD(batch, delta);
         batch.end();
 
-        if (!engine.run(delta)) game.setScreen(new MainMenu(game));
+        if (!engine.run(delta)) {
+            Gdx.app.debug(TAG, "Returning to menu.");
+            game.setScreen(Assets.getInstance().mainMenu);
+        }
 
 
         fps.log(); // log framerate

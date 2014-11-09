@@ -42,7 +42,7 @@ public interface GameEngine extends Disposable {
      *
      * @return the class to use for processing inputs
      */
-    public InputProcessor getInpustProcessor();
+    public InputProcessor getInputProcessor();
 
     /**
      * Called to re-set the game engine to it's default starting state - i.e. New Game.

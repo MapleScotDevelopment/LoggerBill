@@ -110,11 +110,11 @@ public class AboutDialog extends Dialog implements EventListener {
 
     public void changed(ChangeEvent event, Actor actor) {
         if (actor == rate)
-            Gdx.net.openURI(app_url);
+            Gdx.net.openURI(app_specific_url == null ? app_url : app_specific_url);
         if (actor == like)
             Gdx.net.openURI(facebook_url);
         if (actor == tweet)
-            Tweeter.getInstance().postTweet("Hey @MaplescotDev I am loving #LoggerBill\n", app_url);
+            Tweeter.getInstance().postTweet("Hey @MaplescotDev I am loving #LoggerBill\n", app_specific_url == null ? app_url : app_specific_url);
         if (actor == email)
             Emailer.getInstance().postEmail(maplescot_email, "LoggerBill", "I am loving Logger Bill!");
         if (actor == getSource)

@@ -12,6 +12,8 @@
 	
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
 
-    <extend-configuration-property name="gdx.reflect.include" value="com.maplescot.loggerbill" />
+    <extend-configuration-property name="gdx.reflect.include" value="com.maplescot.loggerbill.gpg.Achievement"/>
+    <extend-configuration-property name="gdx.reflect.include"
+                                   value="com.maplescot.loggerbill.gpg.LoggerBillAchievement"/>
     <extend-configuration-property name="gdx.reflect.include" value="com.badlogic.gdx.scenes" />
 </module>

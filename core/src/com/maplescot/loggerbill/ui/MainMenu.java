@@ -23,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.maplescot.loggerbill.game.LoggerEngine;
 import com.maplescot.loggerbill.game.world.BackgroundScenery;
@@ -34,6 +35,7 @@ import com.maplescot.loggerbill.misc.Constants;
 import com.maplescot.loggerbill.misc.ProfileManager;
 import com.maplescot.loggerbill.misc.Tweeter;
 
+import static com.maplescot.loggerbill.misc.Constants.app_specific_url;
 import static com.maplescot.loggerbill.misc.Constants.app_url;
 
 /**
@@ -50,6 +52,7 @@ public class MainMenu extends AbstractScreen {
     private Dialog aboutDialog;
     private Table menu;
     private boolean play = false; // NB: See hide()
+    private GameScreen gameScreen;
 
     public MainMenu(Game game) {
         super(game);
@@ -88,9 +91,10 @@ public class MainMenu extends AbstractScreen {
         Button offButton = new Button(skin, "offButton");
 
         speakerButton.setChecked(ProfileManager.getProfile().isSoundOn());
-        speakerButton.addListener(new ChangeListener() {
+        speakerButton.addListener(new ClickListener() {
             @Override
-            public void changed(ChangeEvent event, Actor actor) {
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
                 boolean soundOn = !ProfileManager.getProfile().isSoundOn();
                 ProfileManager.getProfile().setSoundOn(soundOn);
                 speakerButton.setChecked(soundOn);
@@ -98,9 +102,10 @@ public class MainMenu extends AbstractScreen {
         });
 
         musicButton.setChecked(ProfileManager.getProfile().isMusicOn());
-        musicButton.addListener(new ChangeListener() {
+        musicButton.addListener(new ClickListener() {
             @Override
-            public void changed(ChangeEvent event, Actor actor) {
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
                 boolean musicOn = !ProfileManager.getProfile().isMusicOn();
                 ProfileManager.getProfile().setMusicOn(musicOn);
                 musicButton.setChecked(musicOn);
@@ -128,7 +133,8 @@ public class MainMenu extends AbstractScreen {
             public void changed(ChangeEvent event, Actor actor) {
                 Ads.getInstance().showBanner(true);
                 play = true;
-                game.setScreen(new GameScreen(game, new LoggerEngine()));
+                gameScreen = new GameScreen(game, new LoggerEngine());
+                game.setScreen(gameScreen);
             }
         });
 
@@ -145,7 +151,7 @@ public class MainMenu extends AbstractScreen {
                 for (Achievement a : ProfileManager.getAchievementManager().getAchievements()) {
                     if (ProfileManager.getProfile().isAchieved(a)) {
                         if (!ProfileManager.getProfile().isTweeted(a)) {
-                            Tweeter.getInstance().postTweet(a.getName() + "\n" + a.getDesc() + "\n#LoggerBill\n", app_url);
+                            Tweeter.getInstance().postTweet(a.getName() + "\n" + a.getDesc() + "\n#LoggerBill\n", app_specific_url == null ? app_url : app_specific_url);
                             ProfileManager.getProfile().setTweeted(a);
                         }
                     }
@@ -202,6 +208,12 @@ public class MainMenu extends AbstractScreen {
         aboutDialog = new AboutDialog("About", uiSkin, "aboutdialog");
     }
 
+    public void resetSoundButtons() {
+        musicButton.setChecked(ProfileManager.getProfile().isMusicOn());
+        Assets.getInstance().playMusic(ProfileManager.getProfile().isMusicOn());
+        speakerButton.setChecked(ProfileManager.getProfile().isSoundOn());
+    }
+
     @Override
     public void render(float delta) {
         // Colour my world blue.
@@ -227,6 +239,16 @@ public class MainMenu extends AbstractScreen {
         Ads.getInstance().showBanner(false);
         BackgroundScenery.getInstance().init();
         BackgroundScenery.getInstance().setNight(false); // Never night on the main menu.
+
+        // dispose of used screens if we have them
+        if (gameScreen != null) {
+//            gameScreen.dispose();
+            gameScreen = null;
+        }
+        if (Assets.getInstance().splashScreen != null) {
+//            Assets.getInstance().splashScreen.dispose();
+            Assets.getInstance().splashScreen = null;
+        }
         rebuildStage();
     }
 

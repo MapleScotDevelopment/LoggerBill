@@ -29,15 +29,17 @@ public class GPG {
 
         public void login();
 
-        public void submitScore(String leaderboardId, int score);
+        public void submitScore(String leaderboardId, long score);
 
         public void unlockAchievement(String achievementId);
 
+        public boolean canShowLeaderboards();
         public void showLeaderboards(Stage stage);
 
+        public boolean canShowAchievements();
         public void showAchievements(Stage stage);
 
-        public void setAchievementIncrement(String id, int value);
+        public void setAchievementIncrement(String id, long value, long max);
     }
 
     private static GPG instance;
@@ -65,7 +67,7 @@ public class GPG {
         actual.login();
     }
 
-    public void submitScore(String leaderboardId, int score) {
+    public void submitScore(String leaderboardId, long score) {
         actual.submitScore(leaderboardId, score);
     }
 
@@ -74,7 +76,7 @@ public class GPG {
     }
 
     public void showLeaderboards(Stage stage) {
-        if (getSignedIn())
+        if (getSignedIn() && actual.canShowLeaderboards())
             actual.showLeaderboards(stage);
         else {
             StatsDialog s = new StatsDialog("Player Statistics", Assets.getInstance().uiSkin, "dialog");
@@ -83,7 +85,7 @@ public class GPG {
     }
 
     public void showAchievements(Stage stage) {
-        if (getSignedIn())
+        if (getSignedIn() && actual.canShowAchievements())
             actual.showAchievements(stage);
         else {
             AchievementsDialog a = new AchievementsDialog("Achievements", Assets.getInstance().uiSkin, "dialog");
@@ -91,7 +93,7 @@ public class GPG {
         }
     }
 
-    public void setAchievementIncrement(String id, int value) {
-        actual.setAchievementIncrement(id, value);
+    public void setAchievementIncrement(String id, long value, long max) {
+        actual.setAchievementIncrement(id, value, max);
     }
 }

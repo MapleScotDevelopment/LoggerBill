@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.4'
-        classpath 'com.android.tools.build:gradle:0.10+'
+        classpath 'com.android.tools.build:gradle:0.12+'
         classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.10'
     }
 }
@@ -19,7 +19,7 @@ allprojects {
 
     ext {
         appName = 'LoggerBill'
-        gdxVersion = '1.3.1'
+        gdxVersion = '1.4.1'
         roboVMVersion = '0.0.14'
         gwtVersion='2.6.1'
     }
@@ -58,6 +58,32 @@ project(":android") {
         compile 'com.google.android.gms:play-services:5.0.89'
     }
 }
+     /*
+project(":GameCircleSDK") {
+    apply plugin: "android-library"
+
+    dependencies {
+        compile files("libs/AmazonInsights-android-sdk-2.1.26.jar", "libs/gamecirclesdk.jar", "libs/login-with-amazon-sdk.jar", "libs/amazon-ads-5.4.146.jar")
+    }
+}
+
+project(":fire") {
+    apply plugin: "android"
+
+    configurations { natives }
+
+    dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+        //local
+        compile project(":GameCircleSDK")
+    }
+
+}
+     */
 
 project(":ios") {
     apply plugin: "java"

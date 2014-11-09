@@ -41,12 +41,24 @@ public class DesktopLauncher {
             settings.paddingY=5;
 
 
-            try{ TexturePacker.process(settings, "../assets-raw/images-ui", "images", "loggerbill-ui.pack"); } catch (Exception Ignored) {}
-            try{ TexturePacker.process(settings, "../assets-raw/skin", "images", "uiskin.pack"); } catch (Exception Ignored) {}
+            try {
+                TexturePacker.process(settings, "../assets-raw/images-ui", "images", "loggerbill-ui");
+            } catch (Exception Ignored) {
+            }
+            try {
+                TexturePacker.process(settings, "../assets-raw/skin", "images", "uiskin");
+            } catch (Exception Ignored) {
+            }
 
 
-            try {TexturePacker.process(settings, "../assets-raw/gameSprites", "images", "game-sprites.pack"); } catch (Exception Ignored) {}
-            try {TexturePacker.process(settings, "../assets-raw/splashSprites", "images", "splash-sprites.pack"); } catch (Exception Ignored) {}
+            try {
+                TexturePacker.process(settings, "../assets-raw/gameSprites", "images", "game-sprites");
+            } catch (Exception Ignored) {
+            }
+            try {
+                TexturePacker.process(settings, "../assets-raw/splashSprites", "images", "splash-sprites");
+            } catch (Exception Ignored) {
+            }
 
         }
 
@@ -68,7 +80,7 @@ public class DesktopLauncher {
             }
 
             @Override
-            public void submitScore(String leaderboardId, int score) {
+            public void submitScore(String leaderboardId, long score) {
 
             }
 
@@ -78,8 +90,18 @@ public class DesktopLauncher {
             }
 
             @Override
+            public boolean canShowLeaderboards() {
+                return false;
+            }
+
+            @Override
             public void showLeaderboards(Stage stage) {
 
+            }
+
+            @Override
+            public boolean canShowAchievements() {
+                return false;
             }
 
             @Override
@@ -87,7 +109,7 @@ public class DesktopLauncher {
             }
 
             @Override
-            public void setAchievementIncrement(String id, int value) {
+            public void setAchievementIncrement(String id, long value, long max) {
 
             }
         };
@@ -124,6 +146,6 @@ public class DesktopLauncher {
             }
         };
 
-		new LwjglApplication(new LoggerBillGame(gpg, ads, cloudsave, null, null), config);
+		new LwjglApplication(new LoggerBillGame(gpg, ads, cloudsave, null, null, "http://maplescot.itch.io/logger-bill"), config);
 	}
 }

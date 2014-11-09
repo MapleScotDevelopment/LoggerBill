@@ -39,7 +39,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
             }
 
             @Override
-            public void submitScore(String leaderboardId, int score) {
+            public void submitScore(String leaderboardId, long score) {
 
             }
 
@@ -49,8 +49,18 @@ public class IOSLauncher extends IOSApplication.Delegate {
             }
 
             @Override
+            public boolean canShowLeaderboards() {
+                return false;
+            }
+
+            @Override
             public void showLeaderboards(Stage stage) {
 
+            }
+
+            @Override
+            public boolean canShowAchievements() {
+                return false;
             }
 
             @Override
@@ -59,7 +69,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
             }
 
             @Override
-            public void setAchievementIncrement(String id, int value) {
+            public void setAchievementIncrement(String id, long value, long max) {
 
             }
         };
@@ -96,7 +106,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
             }
         };
 
-        return new IOSApplication(new LoggerBillGame(gpg, ads, cloudsave, null, null), config);
+        return new IOSApplication(new LoggerBillGame(gpg, ads, cloudsave, null, null, "https://itunes.apple.com/gb/app/timberman/id871809581?mt=8&uo=4"), config);
     }
 
     public static void main(String[] argv) {

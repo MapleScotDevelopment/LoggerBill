@@ -244,14 +244,12 @@ public class Profile implements Json.Serializable {
 
         // test our achievements
         for (Achievement a : ProfileManager.getAchievementManager().getAchievements()) {
-            if (!achievementsMap.containsKey(a.getId()) || !achievementsMap.get(a.getId())) {
-                if (a.isIncremental()) {
-                    GPG.getInstance().setAchievementIncrement(a.getId(), (int) totalChunks);
-                }
-                if (a.test(chunk_counter, cps, totalPlays, totalChunks, bestChunks, bestCPS)) {
-                    achievementsMap.put(a.getId(), true);
-                    GPG.getInstance().unlockAchievement(a.getId());
-                }
+            if (a.isIncremental()) {
+                GPG.getInstance().setAchievementIncrement(a.getId(), (int) totalChunks, (long)a.getValue());
+            }
+            if (a.test(chunk_counter, cps, totalPlays, totalChunks, bestChunks, bestCPS)) {
+                achievementsMap.put(a.getId(), true);
+                GPG.getInstance().unlockAchievement(a.getId());
             }
         }
 

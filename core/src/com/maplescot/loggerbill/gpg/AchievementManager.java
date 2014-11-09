@@ -16,6 +16,8 @@ package com.maplescot.loggerbill.gpg;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.reflect.ClassReflection;
+import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.maplescot.loggerbill.misc.Constants;
 
 import java.util.ArrayList;
@@ -32,21 +34,21 @@ public class AchievementManager {
     private List<Achievement> achievements = new ArrayList<Achievement>();
 
     public void init() {
+
         JsonReader jsonReader = new JsonReader();
         JsonValue values = jsonReader.parse(Gdx.files.internal(Constants.ACHIEVEMENTS));
         for (JsonValue value = values.child; value != null; value = value.next) {
             if (value.type() == JsonValue.ValueType.object) {
                 String objectName = value.name();
                 Achievement achievement = null;
+
                 try {
-                    achievement = (Achievement) Class.forName(objectName).newInstance();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
+                    //achievement = (Achievement) ClassReflection.forName(objectName);
+                    achievement = (Achievement) ClassReflection.newInstance(ClassReflection.forName(objectName));
+                } catch (ReflectionException e) {
                     e.printStackTrace();
                 }
+
                 achievement.init(value.get("id").asString(), value.get("name").asString(),
                         value.get("desc").asString(), value.get("type").asString(), value.get("test").asString(),
                         value.get("value").asFloat(), value.get("incremental").asBoolean());

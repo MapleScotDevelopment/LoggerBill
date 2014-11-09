@@ -19,19 +19,19 @@ import com.badlogic.gdx.Gdx;
 import com.maplescot.loggerbill.gpg.Ads;
 import com.maplescot.loggerbill.gpg.CloudSave;
 import com.maplescot.loggerbill.gpg.GPG;
-import com.maplescot.loggerbill.misc.Emailer;
-import com.maplescot.loggerbill.misc.ProfileManager;
-import com.maplescot.loggerbill.misc.Tweeter;
+import com.maplescot.loggerbill.misc.*;
 import com.maplescot.loggerbill.ui.SplashScreen;
 
 public class LoggerBillGame extends Game {
 
-    public LoggerBillGame(GPG.Resolver gpgResolver, Ads.Resolver adsResolver, CloudSave.Resolver cloudResolver, Tweeter.Resolver tweetResolver, Emailer.Resolver emailerResolver) {
+    public LoggerBillGame(GPG.Resolver gpgResolver, Ads.Resolver adsResolver, CloudSave.Resolver cloudResolver,
+                          Tweeter.Resolver tweetResolver, Emailer.Resolver emailerResolver, String app_specific_url) {
         GPG.init(gpgResolver);
         Ads.init(adsResolver);
         CloudSave.init(cloudResolver);
         Tweeter.init(tweetResolver);
         Emailer.init(emailerResolver);
+        Constants.app_specific_url = app_specific_url;
     }
 
 	@Override
@@ -40,7 +40,8 @@ public class LoggerBillGame extends Game {
 
         ProfileManager.init();
 
-		setScreen(new SplashScreen(this));
+        Assets.getInstance().splashScreen = new SplashScreen(this);
+        setScreen(Assets.getInstance().splashScreen);
 	}
 
 	@Override

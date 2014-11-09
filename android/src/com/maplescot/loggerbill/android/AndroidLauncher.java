@@ -29,13 +29,14 @@ import com.google.android.gms.ads.*;
 import com.google.android.gms.appstate.AppStateManager;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.games.Games;
-import com.maplescot.loggerbill.misc.Emailer;
+import com.google.android.gms.games.GamesActivityResultCodes;
 import com.maplescot.loggerbill.LoggerBillGame;
-import com.maplescot.loggerbill.misc.Tweeter;
 import com.maplescot.loggerbill.android.basegameutils.BaseGameActivity;
 import com.maplescot.loggerbill.gpg.Ads;
 import com.maplescot.loggerbill.gpg.CloudSave;
 import com.maplescot.loggerbill.gpg.GPG;
+import com.maplescot.loggerbill.misc.Emailer;
+import com.maplescot.loggerbill.misc.Tweeter;
 
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class AndroidLauncher extends BaseGameActivity implements GPG.Resolver, A
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-        View gameView = initializeForView(new LoggerBillGame(this, this, this, this, this), config);
+        View gameView = initializeForView(new LoggerBillGame(this, this, this, this, this, getString(R.string.app_url)), config);
         // Create an ad.
         adView = new AdView(this);
         adView.setAdSize(AdSize.SMART_BANNER);
@@ -91,18 +92,7 @@ public class AndroidLauncher extends BaseGameActivity implements GPG.Resolver, A
         layout.addView(adView, adParams);
 
         Log.d("Advertising", "You get an interstitial ad this time...");
-        interstitial.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                Log.d("Advertising", "Ad Loaded");
-                if (interstitial.isLoaded()) interstitial.show();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                Log.d("Advertising", "Error loading interstitial ad: " + errorCode);
-            }
-        });
+        interstitial.loadAd(adRequest);
 
         setContentView(layout);
     }
@@ -125,21 +115,41 @@ public class AndroidLauncher extends BaseGameActivity implements GPG.Resolver, A
     }
 
     @Override
-    public void submitScore(String leaderboardId, int score) {
-        if (isSignedIn())
-            Games.Leaderboards.submitScore(getApiClient(), leaderboardId, score);
+    public void submitScore(String leaderboardId, long score) {
+        try {
+            if (isSignedIn())
+                Games.Leaderboards.submitScore(getApiClient(), leaderboardId, score);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to submit score", e);
+            mHelper.getApiClient().disconnect();
+        }
     }
 
     @Override
     public void unlockAchievement(String achievementId) {
-        if (isSignedIn())
-            Games.Achievements.unlockImmediate(getApiClient(), achievementId);
+        try {
+            if (isSignedIn())
+                Games.Achievements.unlockImmediate(getApiClient(), achievementId);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to unlock achievement", e);
+            mHelper.getApiClient().disconnect();
+        }
     }
 
     @Override
-    public void setAchievementIncrement(String id, int value) {
-        if (isSignedIn())
-            Games.Achievements.setSteps(getApiClient(), id, value);
+    public void setAchievementIncrement(String id, long value, long max) {
+        try {
+            if (isSignedIn())
+                Games.Achievements.setSteps(getApiClient(), id, (int) value);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to set achievement steps", e);
+            mHelper.getApiClient().disconnect();
+        }
+    }
+
+    @Override
+    public boolean canShowLeaderboards() {
+        return true;
     }
 
     @Override
@@ -152,12 +162,18 @@ public class AndroidLauncher extends BaseGameActivity implements GPG.Resolver, A
                         startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()), RC_UNUSED);
                     } catch (Exception e) {
                         Log.e(TAG, "Failed to show leaderboards", e);
+                        mHelper.getApiClient().disconnect();
                     }
                 } else {
                     beginUserInitiatedSignIn();
                 }
             }
         });
+    }
+
+    @Override
+    public boolean canShowAchievements() {
+        return true;
     }
 
     @Override
@@ -170,6 +186,7 @@ public class AndroidLauncher extends BaseGameActivity implements GPG.Resolver, A
                         startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()), RC_UNUSED);
                     } catch (Exception e) {
                         Log.e(TAG, "Failed to show achievements", e);
+                        mHelper.getApiClient().disconnect();
                     }
                 } else {
                     beginUserInitiatedSignIn();
@@ -236,6 +253,8 @@ public class AndroidLauncher extends BaseGameActivity implements GPG.Resolver, A
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                if (interstitial.isLoaded()) interstitial.show();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 interstitial.loadAd(adRequest);
             }
         });
@@ -274,5 +293,16 @@ public class AndroidLauncher extends BaseGameActivity implements GPG.Resolver, A
         share.putExtra(Intent.EXTRA_SUBJECT, subject);
         share.putExtra(Intent.EXTRA_TEXT, body);
         startActivityForResult(share, 4);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == RC_UNUSED
+                && resultCode == GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED) {
+            mHelper.getApiClient().disconnect();
+            // update your logic here (show login btn, hide logout btn).
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
