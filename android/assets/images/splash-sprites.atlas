@@ -1,0 +1,97 @@
+
+splash-sprites.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+loading
+  rotate: false
+  xy: 2, 44
+  size: 350, 127
+  orig: 350, 127
+  offset: 0, 0
+  index: -1
+morph
+  rotate: false
+  xy: 2, 791
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 1
+morph
+  rotate: false
+  xy: 2, 586
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 2
+morph
+  rotate: false
+  xy: 324, 791
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 3
+morph
+  rotate: false
+  xy: 2, 381
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 4
+morph
+  rotate: false
+  xy: 324, 586
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 5
+morph
+  rotate: false
+  xy: 646, 791
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 6
+morph
+  rotate: false
+  xy: 2, 176
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 7
+morph
+  rotate: false
+  xy: 324, 381
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 8
+morph
+  rotate: false
+  xy: 646, 586
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 9
+morph
+  rotate: false
+  xy: 324, 176
+  size: 320, 200
+  orig: 320, 200
+  offset: 0, 0
+  index: 10
+name
+  rotate: false
+  xy: 646, 542
+  size: 320, 39
+  orig: 320, 39
+  offset: 0, 0
+  index: -1
+name2
+  rotate: false
+  xy: 2, 5
+  size: 320, 34
+  orig: 320, 34
+  offset: 0, 0
+  index: -1

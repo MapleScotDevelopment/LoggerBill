@@ -1,0 +1,161 @@
+
+loggerbill-ui.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+LoggerBill
+  rotate: false
+  xy: 2, 641
+  size: 720, 335
+  orig: 720, 335
+  offset: 0, 0
+  index: -1
+button_ach
+  rotate: false
+  xy: 876, 868
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_ach_off
+  rotate: false
+  xy: 876, 755
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_back
+  rotate: false
+  xy: 724, 643
+  size: 150, 100
+  orig: 150, 100
+  offset: 0, 0
+  index: -1
+button_leader
+  rotate: false
+  xy: 876, 642
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_leader_off
+  rotate: false
+  xy: 560, 393
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_ms_logo
+  rotate: false
+  xy: 560, 506
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+button_ms_logo_push
+  rotate: false
+  xy: 2, 42
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+button_music
+  rotate: false
+  xy: 304, 323
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_music_off
+  rotate: false
+  xy: 304, 210
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_off
+  rotate: false
+  xy: 414, 323
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_off_push
+  rotate: false
+  xy: 414, 210
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_play
+  rotate: false
+  xy: 258, 436
+  size: 300, 200
+  orig: 300, 200
+  offset: 0, 0
+  index: -1
+button_play_push
+  rotate: false
+  xy: 2, 177
+  size: 300, 200
+  orig: 300, 200
+  offset: 0, 0
+  index: -1
+button_replay
+  rotate: false
+  xy: 134, 72
+  size: 150, 100
+  orig: 150, 100
+  offset: 0, 0
+  index: -1
+button_speaker
+  rotate: false
+  xy: 524, 280
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_speaker_off
+  rotate: false
+  xy: 524, 167
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_twitter
+  rotate: false
+  xy: 634, 280
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+button_twitter_off
+  rotate: false
+  xy: 634, 167
+  size: 108, 108
+  orig: 108, 108
+  offset: 0, 0
+  index: -1
+games_controller
+  rotate: false
+  xy: 2, 5
+  size: 40, 32
+  orig: 40, 32
+  offset: 0, 0
+  index: -1
+paused_background
+  rotate: false
+  xy: 2, 382
+  size: 254, 254
+  split: 30, 30, 45, 5
+  orig: 254, 254
+  offset: 0, 0
+  index: -1
+pine_tree
+  rotate: false
+  xy: 724, 748
+  size: 150, 228
+  orig: 150, 228
+  offset: 0, 0
+  index: -1

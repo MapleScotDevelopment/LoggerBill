@@ -1,0 +1,202 @@
+
+game-sprites.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bill
+  rotate: false
+  xy: 2, 93
+  size: 145, 192
+  orig: 145, 192
+  offset: 0, 0
+  index: 1
+bill
+  rotate: false
+  xy: 149, 93
+  size: 145, 192
+  orig: 145, 192
+  offset: 0, 0
+  index: 2
+bill
+  rotate: false
+  xy: 770, 812
+  size: 145, 192
+  orig: 145, 192
+  offset: 0, 0
+  index: 3
+biplane
+  rotate: false
+  xy: 432, 743
+  size: 75, 35
+  orig: 75, 35
+  offset: 0, 0
+  index: -1
+bird
+  rotate: false
+  xy: 258, 56
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+bird
+  rotate: false
+  xy: 432, 706
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+bird
+  rotate: false
+  xy: 258, 19
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+bird
+  rotate: false
+  xy: 466, 706
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+bird
+  rotate: false
+  xy: 296, 256
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 5
+chunk_branch1
+  rotate: false
+  xy: 2, 689
+  size: 284, 142
+  orig: 284, 142
+  offset: 0, 0
+  index: -1
+chunk_branch2
+  rotate: false
+  xy: 484, 862
+  size: 284, 142
+  orig: 284, 142
+  offset: 0, 0
+  index: -1
+chunk_clear1
+  rotate: false
+  xy: 288, 689
+  size: 142, 142
+  orig: 142, 142
+  offset: 0, 0
+  index: -1
+chunk_clear2
+  rotate: false
+  xy: 260, 542
+  size: 142, 142
+  orig: 142, 142
+  offset: 0, 0
+  index: -1
+cloud1
+  rotate: false
+  xy: 2, 556
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+cloud2
+  rotate: false
+  xy: 2, 423
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+cloud3
+  rotate: false
+  xy: 2, 290
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+dead_bill
+  rotate: false
+  xy: 917, 812
+  size: 93, 192
+  orig: 93, 192
+  offset: 0, 0
+  index: -1
+firefly
+  rotate: false
+  xy: 331, 411
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 1012, 876
+  size: 10, 128
+  orig: 10, 128
+  offset: 0, 0
+  index: -1
+guage_empty
+  rotate: false
+  xy: 484, 793
+  size: 256, 64
+  orig: 256, 64
+  offset: 0, 0
+  index: -1
+guage_full
+  rotate: false
+  xy: 742, 808
+  size: 2, 49
+  orig: 2, 49
+  offset: 0, 0
+  index: -1
+hills
+  rotate: false
+  xy: 2, 836
+  size: 480, 168
+  orig: 480, 168
+  offset: 0, 0
+  index: -1
+key
+  rotate: false
+  xy: 260, 293
+  size: 68, 69
+  orig: 68, 69
+  offset: 0, 0
+  index: -1
+moon
+  rotate: false
+  xy: 260, 441
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 432, 783
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+stump
+  rotate: false
+  xy: 2, 5
+  size: 254, 83
+  orig: 254, 83
+  offset: 0, 0
+  index: -1
+tap
+  rotate: false
+  xy: 260, 367
+  size: 69, 69
+  orig: 69, 69
+  offset: 0, 0
+  index: -1
+tombstone
+  rotate: false
+  xy: 358, 456
+  size: 54, 81
+  orig: 54, 81
+  offset: 0, 0
+  index: -1
